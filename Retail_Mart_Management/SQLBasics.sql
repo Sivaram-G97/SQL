@@ -1,0 +1,16 @@
+CREATE DATABASE SQLBasics;
+USE sqlbasics;
+ALTER TABLE sales_datasets ADD COLUMN S_no VARCHAR(3) FIRST;
+ALTER TABLE sales_datasets ADD COLUMN Category VARCHAR(20);
+DESCRIBE product_datasets;
+ALTER TABLE product_datasets MODIFY stock VARCHAR(100) NULL;
+RENAME TABLE customer_datasets TO customer_details;
+ALTER TABLE sales_datasets DROP COLUMN S_no, DROP COLUMN Category;
+DESC sales_datasets;
+SELECT order_no, c_id, order_date, price, qty FROM sales_datasets;
+SELECT * FROM product_datasets WHERE category = 'Stationary';
+SELECT DISTINCT category FROM product_datasets;
+SELECT * FROM sales_datasets WHERE qty > 2 AND price < 500;
+SELECT c_name FROM customer_details WHERE c_name LIKE '%a';
+SELECT * FROM product_datasets ORDER BY price DESC;
+SELECT p_code, category FROM product_datasets WHERE category IN (SELECT category FROM product_datasets GROUP BY category HAVING COUNT(*) >= 2);
